@@ -110,27 +110,9 @@
                     <h3 class="text-center mb-4">Point-Bench Examples</h3>
                     <div id="pointBenchCarousel" class="carousel slide" data-bs-ride="false">
                         <div class="carousel-inner">
-                            <!-- Example 1 -->
-                            <div class="carousel-item active">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-6">
-                                        <div class="gallery-item mb-3">
-                                            <img src="data/gallery/1_12_candy_apples_and_halloween_cookies_by_peppertreeart_d6rg6hm-414w.jpg" class="img-fluid rounded" alt="Point-Bench Example 1">
-                                            <div class="caption">Image</div>
-                                        </div>
-                                        <div class="gallery-item mb-3">
-                                            <img src="data/gallery/1_12_candy_apples_and_halloween_cookies_by_peppertreeart_d6rg6hm-414w_mask.png" class="img-fluid rounded" alt="Point-Bench Example 1 Mask">
-                                            <div class="caption">Mask</div>
-                                        </div>
-                                        <div class="gallery-item text-center">
-                                            <div class="caption query-text">Query: "Point to coins."</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             
                             <!-- Example 2 -->
-                            <div class="carousel-item">
+                            <div class="carousel-item active">
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="gallery-item mb-3">
@@ -189,11 +171,11 @@
                         
                         <!-- Navigation Controls -->
                         <button class="carousel-control-prev" type="button" data-bs-target="#pointBenchCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#pointBenchCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                         
@@ -224,7 +206,10 @@
                                 <th>Elo Rating</th>
                                 <th>Wins</th>
                                 <th>Losses</th>
+                                <th>Games</th>
                                 <th>Win Rate</th>
+                                <th>Lower CI</th>
+                                <th>Upper CI</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -244,52 +229,7 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="gallery-section">
-            <div class="container">
-                <h2 class="section-title">Gallery</h2>
-                <p class="text-center mb-4">Visual examples from our Point Arena evaluation platform</p>
-                
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="gallery-item">
-                            <img src="data/gallery-1.jpg" class="img-fluid rounded" alt="Gallery Example 1">
-                            <div class="caption">Affordance detection visualization</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="gallery-item">
-                            <img src="data/gallery-2.jpg" class="img-fluid rounded" alt="Gallery Example 2">
-                            <div class="caption">Spatial relationship pointing example</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="gallery-item">
-                            <img src="data/gallery-3.jpg" class="img-fluid rounded" alt="Gallery Example 3">
-                            <div class="caption">Multi-object reasoning task</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="gallery-item">
-                            <img src="data/gallery-4.jpg" class="img-fluid rounded" alt="Gallery Example 4">
-                            <div class="caption">Complex scene understanding</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="gallery-item">
-                            <img src="data/gallery-5.jpg" class="img-fluid rounded" alt="Gallery Example 5">
-                            <div class="caption">Steerability evaluation</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="gallery-item">
-                            <img src="data/gallery-6.jpg" class="img-fluid rounded" alt="Gallery Example 6">
-                            <div class="caption">Counting and pointing accuracy</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Point-Act Section -->
         <section id="point-act" class="leaderboard-section">

@@ -344,7 +344,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td class="score">${safeParseFloat(row['Elo Rating']).toFixed(1)}</td>
                     <td class="score">${safeParseFloat(row.Wins, 0)}</td>
                     <td class="score">${safeParseFloat(row.Losses, 0)}</td>
+                    <td class="score">${safeParseFloat(row.Games, 0)}</td>
                     <td class="score">${row['Win Rate'] || '0%'}</td>
+                    <td class="score">${safeParseFloat(row['Lower CI']).toFixed(1)}</td>
+                    <td class="score">${safeParseFloat(row['Upper CI']).toFixed(1)}</td>
                 `;
                 
                 tableBody.appendChild(tr);
