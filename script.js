@@ -268,8 +268,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to load CSV data
     async function loadCSV(url) {
         const response = await fetch(url);
-        const data = await response.text();
-        return parseCSV(data);
+        const text = await response.text();
+        return parseCSV(text);
     }
 
     // Function to safely parse numeric values
@@ -390,8 +390,290 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize all tables
-    updatePointBenchTable();
-    updatePointBattleTable();
-    updatePointActTable();
+    // Gallery functionality
+    let galleryData = [];
+    let currentExampleIndex = 0;
+    let filteredGalleryData = [];
+
+    async function loadGalleryData() {
+        try {
+            const response = await fetch('data/gallery/data.json');
+            if (!response.ok) {
+                throw new Error(`Failed to load gallery data: ${response.status}`);
+            }
+            galleryData = await response.json();
+            
+            // Use the data directly without checking all files first
+            // This avoids multiple HEAD requests that can lead to broken pipes
+            filteredGalleryData = [...galleryData];
+            
+            console.log(`Loaded ${filteredGalleryData.length} gallery examples`);
+            return filteredGalleryData;
+        } catch (error) {
+            console.error('Error loading gallery data:', error);
+            return [];
+        }
+    }
+
+    function displayGalleryExample(index) {
+        if (!filteredGalleryData || !filteredGalleryData.length) {
+            // Handle case where no valid examples exist
+            const carousel = document.querySelector('#exampleCarousel .carousel-inner');
+            if (carousel) {
+                carousel.innerHTML = '<div class="carousel-item active"><div class="text-center p-5">No valid examples found. Please check the image files.</div></div>';
+            }
+            
+            const queryText = document.getElementById('queryText');
+            const categoryBadge = document.getElementById('categoryBadge');
+            const countInfo = document.getElementById('countInfo');
+            
+            if (queryText) queryText.textContent = '';
+            if (categoryBadge) categoryBadge.textContent = '';
+            if (countInfo) countInfo.style.display = 'none';
+            return;
+        }
+        
+        // Get example data
+        const example = filteredGalleryData[index];
+        if (!example) return;
+        
+        // Get DOM elements
+        const carousel = document.querySelector('#exampleCarousel .carousel-inner');
+        const queryText = document.getElementById('queryText');
+        const categoryBadge = document.getElementById('categoryBadge');
+        const countInfo = document.getElementById('countInfo');
+        
+        if (!carousel || !queryText || !categoryBadge || !countInfo) {
+            console.error('Missing required DOM elements for gallery display');
+            return;
+        }
+        
+        // Clear existing items
+        carousel.innerHTML = '';
+        
+        // Create carousel item
+        const carouselItem = document.createElement('div');
+        carouselItem.className = 'carousel-item active';
+        
+        // Create image container with both original and mask
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'gallery-image-container position-relative';
+        
+        // Original image with error handling
+        const originalImg = document.createElement('img');
+        originalImg.className = 'gallery-image d-block w-100 original-image';
+        originalImg.alt = 'Original image';
+        originalImg.src = `data/gallery/${example.image_filename}`;
+        originalImg.dataset.src = `data/gallery/${example.image_filename}`;
+        originalImg.onerror = function() {
+            this.onerror = null;
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2YxZjFmMSIvPjx0ZXh0IHg9IjQwMCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzZweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk5OTk5OSI+SW1hZ2Ugbm90IGF2YWlsYWJsZTwvdGV4dD48L3N2Zz4=';
+        };
+        
+        // Mask image with error handling
+        const maskImg = document.createElement('img');
+        maskImg.className = 'gallery-image d-block w-100 mask-image';
+        maskImg.alt = 'Mask';
+        maskImg.src = `data/gallery/${example.mask_filename}`;
+        maskImg.dataset.src = `data/gallery/${example.mask_filename}`;
+        maskImg.style.display = 'none';
+        maskImg.onerror = function() {
+            this.onerror = null;
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2YxZjFmMSIvPjx0ZXh0IHg9IjQwMCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzZweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk5OTk5OSI+TWFzayBpbWFnZSBub3QgYXZhaWxhYmxlPC90ZXh0Pjwvc3ZnPg==';
+        };
+        
+        // Add images to container
+        imageContainer.appendChild(originalImg);
+        imageContainer.appendChild(maskImg);
+        
+        // Add image container to carousel item
+        carouselItem.appendChild(imageContainer);
+        
+        // Add carousel item to carousel
+        carousel.appendChild(carouselItem);
+        
+        // Update metadata
+        queryText.textContent = example.user_input || 'No query provided';
+        categoryBadge.textContent = example.category || 'Unknown';
+        
+        // Update count info if available
+        if (example.count) {
+            countInfo.textContent = `Count: ${example.count}`;
+            countInfo.style.display = 'inline-block';
+        } else {
+            countInfo.style.display = 'none';
+        }
+        
+        // Set color based on category
+        const categoryColors = {
+            'spatial': 'bg-primary',
+            'reasoning': 'bg-success',
+            'affordable': 'bg-warning',
+            'steerable': 'bg-info',
+            'counting': 'bg-danger'
+        };
+        
+        // Reset all classes and add the appropriate one
+        categoryBadge.className = 'badge';
+        categoryBadge.classList.add(categoryColors[example.category] || 'bg-secondary');
+        
+        currentExampleIndex = index;
+    }
+
+    function filterGalleryByCategory(category) {
+        if (category === 'all') {
+            filteredGalleryData = [...galleryData];
+        } else {
+            filteredGalleryData = galleryData.filter(item => item.category === category);
+        }
+        
+        if (filteredGalleryData.length > 0) {
+            displayGalleryExample(0);
+        } else {
+            // No examples for this category
+            const carousel = document.querySelector('#exampleCarousel .carousel-inner');
+            carousel.innerHTML = '<div class="carousel-item active"><div class="text-center p-5">No examples found for this category</div></div>';
+            
+            const queryText = document.getElementById('queryText');
+            const categoryBadge = document.getElementById('categoryBadge');
+            const countInfo = document.getElementById('countInfo');
+            
+            queryText.textContent = '';
+            categoryBadge.textContent = '';
+            countInfo.style.display = 'none';
+        }
+    }
+
+    async function initGallery() {
+        await loadGalleryData();
+        
+        if (galleryData.length) {
+            displayGalleryExample(0);
+            
+            // Initialize view mode buttons
+            const showOriginalBtn = document.getElementById('showOriginal');
+            const showMaskBtn = document.getElementById('showMask');
+            const showOverlayBtn = document.getElementById('showOverlay');
+            
+            if (showOriginalBtn && showMaskBtn && showOverlayBtn) {
+                // Show original image
+                showOriginalBtn.addEventListener('click', () => {
+                    // Load original images if they're still showing placeholders
+                    document.querySelectorAll('.original-image').forEach(img => {
+                        if (img.src !== img.dataset.src && img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.style.display = 'block';
+                    });
+                    document.querySelectorAll('.mask-image').forEach(img => img.style.display = 'none');
+                    document.querySelectorAll('.gallery-image-container').forEach(container => container.classList.remove('overlay-mode'));
+                    
+                    // Update button states
+                    showOriginalBtn.classList.add('active');
+                    showMaskBtn.classList.remove('active');
+                    showOverlayBtn.classList.remove('active');
+                });
+                
+                // Show mask only
+                showMaskBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.original-image').forEach(img => img.style.display = 'none');
+                    
+                    // Load mask images if they're still showing placeholders
+                    document.querySelectorAll('.mask-image').forEach(img => {
+                        if (img.src !== img.dataset.src && img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.style.display = 'block';
+                    });
+                    
+                    document.querySelectorAll('.gallery-image-container').forEach(container => container.classList.remove('overlay-mode'));
+                    
+                    // Update button states
+                    showOriginalBtn.classList.remove('active');
+                    showMaskBtn.classList.add('active');
+                    showOverlayBtn.classList.remove('active');
+                });
+                
+                // Show overlay (both original and mask)
+                showOverlayBtn.addEventListener('click', () => {
+                    // Load original images if they're still showing placeholders
+                    document.querySelectorAll('.original-image').forEach(img => {
+                        if (img.src !== img.dataset.src && img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.style.display = 'block';
+                    });
+                    
+                    // Load mask images if they're still showing placeholders
+                    document.querySelectorAll('.mask-image').forEach(img => {
+                        if (img.src !== img.dataset.src && img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.style.display = 'block';
+                        img.style.opacity = '0.7';
+                        img.style.position = 'absolute';
+                        img.style.top = '0';
+                        img.style.left = '0';
+                    });
+                    
+                    document.querySelectorAll('.gallery-image-container').forEach(container => container.classList.add('overlay-mode'));
+                    
+                    // Update button states
+                    showOriginalBtn.classList.remove('active');
+                    showMaskBtn.classList.remove('active');
+                    showOverlayBtn.classList.add('active');
+                });
+            }
+            
+            // Initialize category filter
+            const categoryFilter = document.getElementById('categoryFilter');
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', function() {
+                    filterGalleryByCategory(this.value);
+                });
+            }
+            
+            // Initialize carousel navigation
+            const carousel = document.getElementById('exampleCarousel');
+            if (carousel) {
+                const prevButton = carousel.querySelector('.carousel-control-prev');
+                const nextButton = carousel.querySelector('.carousel-control-next');
+                
+                prevButton.addEventListener('click', () => {
+                    currentExampleIndex = (currentExampleIndex - 1 + filteredGalleryData.length) % filteredGalleryData.length;
+                    displayGalleryExample(currentExampleIndex);
+                });
+                
+                nextButton.addEventListener('click', () => {
+                    currentExampleIndex = (currentExampleIndex + 1) % filteredGalleryData.length;
+                    displayGalleryExample(currentExampleIndex);
+                });
+            }
+        }
+    }
+
+    // Initialize tables and features
+    async function initializeTables() {
+        try {
+            await Promise.all([
+                updatePointBenchTable(),
+                updatePointBattleTable(),
+                updatePointActTable(),
+                initGallery()
+            ]);
+            
+            // Hide all loading indicators once data is loaded
+            document.querySelectorAll('.loading-indicator').forEach(indicator => {
+                indicator.style.display = 'none';
+            });
+        } catch (error) {
+            console.error('Error initializing tables:', error);
+            document.querySelectorAll('.loading-indicator').forEach(indicator => {
+                indicator.innerHTML = '<p class="text-danger">Error loading data. Please try again later.</p>';
+            });
+        }
+    }
+    
+    // Initialize everything
+    initializeTables();
 }); 

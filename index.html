@@ -30,6 +30,9 @@
                                     <a class="nav-link" href="#point-bench">Point-Bench</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="#gallery">Gallery</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="#point-battle">Point-Battle</a>
                                 </li>
                                 <li class="nav-item">
@@ -95,9 +98,115 @@
                         <p class="mt-2">Loading data...</p>
                     </div>
                 </div>
+
+                
+                
                 <div class="csv-download text-center mt-3">
                     <a href="data/point-bench.csv" class="btn btn-sm btn-outline-primary">Download Complete Data (CSV)</a>
                 </div>
+                
+                <!-- Point-Bench Gallery -->
+                <div class="gallery-container mt-5">
+                    <h3 class="text-center mb-4">Point-Bench Examples</h3>
+                    <div id="pointBenchCarousel" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner">
+                            <!-- Example 1 -->
+                            <div class="carousel-item active">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/1_12_candy_apples_and_halloween_cookies_by_peppertreeart_d6rg6hm-414w.jpg" class="img-fluid rounded" alt="Point-Bench Example 1">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/1_12_candy_apples_and_halloween_cookies_by_peppertreeart_d6rg6hm-414w_mask.png" class="img-fluid rounded" alt="Point-Bench Example 1 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to coins."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Example 2 -->
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/0_eheUSKS-D2VumiBm.jpg" class="img-fluid rounded" alt="Point-Bench Example 2">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/0_eheUSKS-D2VumiBm_mask.png" class="img-fluid rounded" alt="Point-Bench Example 2 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the object used to stir or mix things."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Example 3 -->
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/2fc2f9e5-68f3-4ba6-ad74-4f3f76e21377_4592x2870.jpg" class="img-fluid rounded" alt="Point-Bench Example 3">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/2fc2f9e5-68f3-4ba6-ad74-4f3f76e21377_4592x2870_mask.png" class="img-fluid rounded" alt="Point-Bench Example 3 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the structure that cars use to travel over the river."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Example 4 -->
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/6b8ee8146b505bc33393243ca9601d3056a5b71f.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/6b8ee8146b505bc33393243ca9601d3056a5b71f_mask.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the window to the right of the red door."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#pointBenchCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#pointBenchCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        
+                        <!-- Indicators -->
+                        <div class="carousel-indicators position-relative mt-3">
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </section>
 
@@ -131,6 +240,53 @@
                 </div>
                 <div class="csv-download text-center mt-3">
                     <a href="data/point-battle.csv" class="btn btn-sm btn-outline-primary">Download Complete Data (CSV)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">Gallery</h2>
+                <p class="text-center mb-4">Visual examples from our Point Arena evaluation platform</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="data/gallery-1.jpg" class="img-fluid rounded" alt="Gallery Example 1">
+                            <div class="caption">Affordance detection visualization</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="data/gallery-2.jpg" class="img-fluid rounded" alt="Gallery Example 2">
+                            <div class="caption">Spatial relationship pointing example</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="data/gallery-3.jpg" class="img-fluid rounded" alt="Gallery Example 3">
+                            <div class="caption">Multi-object reasoning task</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="data/gallery-4.jpg" class="img-fluid rounded" alt="Gallery Example 4">
+                            <div class="caption">Complex scene understanding</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="data/gallery-5.jpg" class="img-fluid rounded" alt="Gallery Example 5">
+                            <div class="caption">Steerability evaluation</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="data/gallery-6.jpg" class="img-fluid rounded" alt="Gallery Example 6">
+                            <div class="caption">Counting and pointing accuracy</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
