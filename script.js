@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const modelUrl = modelUrls[modelName] || '#';
                 
                 tr.innerHTML = `
-                    <td>${index +.1}</td>
+                    <td>${index + 1}</td>
                     <td><a href="${modelUrl}" target="_blank" rel="noopener noreferrer">${modelName}</a></td>
                     <td class="score">${safeParseFloat(row.Affordance).toFixed(2)}</td>
                     <td class="score">${safeParseFloat(row.Spatial).toFixed(2)}</td>
