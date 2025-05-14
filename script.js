@@ -297,13 +297,36 @@ document.addEventListener('DOMContentLoaded', function() {
             // Sort by Average score (descending)
             data.sort((a, b) => safeParseFloat(b.Average) - safeParseFloat(a.Average));
             
-            // Only display top 5 results
+            // Model URL mapping
+            const modelUrls = {
+                "gemini-2.0-Flash": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash",
+                "gemini-2.5-flash-preview-04-17": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash",
+                "GPT-4o": "https://openai.com/api/",
+                "GPT-4.1": "https://openai.com/api/",
+                "o3": "https://openai.com/api/",
+                "Qwen2.5-VL-7B-Instruct": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
+                "Qwen2.5-VL-32B-Instruct": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct",
+                "Qwen2.5-VL-72B-Instruct": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct",
+                "llava-onevision-qwen2-7b-ov-hf": "https://huggingface.co/llava-hf/llava-onevision-qwen2-7b-ov-hf",
+                "llava-onevision-qwen2-72b-ov-hf": "https://huggingface.co/llava-hf/llava-onevision-qwen2-72b-ov-hf",
+                "Molmo-7B-D": "https://huggingface.co/allenai/Molmo-7B-D-0924",
+                "Molmo-7B-O": "https://huggingface.co/allenai/Molmo-7B-O-0924",
+                "Molmo-72B": "https://huggingface.co/allenai/Molmo-72B-0924",
+                "gemini-2.5-pro-preview-05-06": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro",
+                "grok-2-vision-latest": "https://docs.x.ai/docs/models",
+                "claude-3-7-sonnet-20250219": "https://docs.anthropic.com/en/docs/about-claude/models/all-models",
+                "Human": "#"
+            };
+            
+            // Display all results (not just top 5)
             data.forEach((row, index) => {
                 const tr = document.createElement('tr');
+                const modelName = row[''] || row.Model || '';
+                const modelUrl = modelUrls[modelName] || '#';
                 
                 tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${row[''] || row.Model || ''}</td>
+                    <td>${index +.1}</td>
+                    <td><a href="${modelUrl}" target="_blank" rel="noopener noreferrer">${modelName}</a></td>
                     <td class="score">${safeParseFloat(row.Affordance).toFixed(2)}</td>
                     <td class="score">${safeParseFloat(row.Spatial).toFixed(2)}</td>
                     <td class="score">${safeParseFloat(row.Reasoning).toFixed(2)}</td>
