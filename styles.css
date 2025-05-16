@@ -718,4 +718,21 @@ hr {
     padding: 10px;
     background-color: #f8f9fa;
     border-radius: 5px;
+}
+
+/* Add styling for the authors section */
+.authors {
+    margin-bottom: 25px;
+    font-size: 0.55rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.authors p {
+    margin-bottom: 3px;
+    line-height: 1.3;
+}
+
+.authors sup {
+    font-size: 0.55em;
 } 
