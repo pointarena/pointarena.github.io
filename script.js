@@ -702,4 +702,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize everything
     initializeTables();
+
+    // Function to copy BibTeX citation
+    function copyBibtex() {
+        const bibtexText = document.querySelector('.bibtex-container pre').textContent;
+        navigator.clipboard.writeText(bibtexText)
+            .then(() => {
+                const copyBtn = document.querySelector('.copy-button');
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+    }
 }); 
