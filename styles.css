@@ -41,10 +41,21 @@ body {
     z-index: 1000;
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-brand .logo {
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--primary-color);
+}
+
+.navbar-brand img.logo {
+    height: 1.5rem;
+    width: auto;
+    margin-right: 0.3rem;
 }
 
 .nav-link {
