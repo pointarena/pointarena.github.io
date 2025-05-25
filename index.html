@@ -31,6 +31,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#point-bench">Point-Bench</a>
                                 </li>
+                           
                                 <li class="nav-item">
                                     <a class="nav-link" href="#point-battle">Point-Battle</a>
                                 </li>
@@ -75,12 +76,15 @@
                         <a href="https://homes.cs.washington.edu/~fox" style="color: white;">Dieter Fox<sup>1</sup></a> 
                         <a href="https://ranjaykrishna.com" style="color: white;">Ranjay Krishna<sup>1,2</sup></a>
                     </p>
+
                     <br>
                     <p style="font-size: 0.8rem; color: white; opacity: 0.9; line-height: 1.2; margin-bottom: 2px;">
                         <sup>1</sup>University of Washington <sup>2</sup>Allen Institute for Artificial Intelligence<br>
                         <sup>3</sup>Anderson Collegiate Vocational Institute
                     </p>
+                    
                     <br>
+
                     <p style="font-size: 0.8rem; color: white; opacity: 0.9; line-height: 1.2; margin-bottom: 2px;">
                         <sup>∗</sup>Co-first authors.
                         <sup>†</sup>Co-second authors.
@@ -91,18 +95,390 @@
                     <a href="https://github.com/pointarena/pointarena" class="btn btn-primary">View Code</a>
                     <a href="https://arxiv.org/abs/2505.09990" class="btn btn-primary">Read Paper</a>
                     <a href="https://huggingface.co/datasets/PointArena/pointarena" class="btn btn-primary">Download Data</a>
-                    <!-- NEW BUTTON -->
-                    <a href="https://tinyurl.com/Point-Battle" target="_blank" class="btn btn-warning ms-2">
-                        <i class="fa fa-vote-yea"></i> Point-Battle (Vote)
-                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Point-Bench Section -->
-        <!-- ... rest of your code remains unchanged ... -->
 
-        <!-- (keep all the remaining content you provided above as it is) -->
+        <!-- Point-Bench Section -->
+        <section id="point-bench" class="leaderboard-section">
+            <div class="container">
+                <h2 class="section-title">Point-Bench</h2>
+                <p class="text-center mb-4">Standardized evaluation of precise spatial alignment between language and vision</p>
+                <div class="table-responsive">
+                    <table class="table leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Model</th>
+                                <th>Affordance</th>
+                                <th>Spatial</th>
+                                <th>Reasoning</th>
+                                <th>Steerability</th>
+                                <th>Counting</th>
+                                <th>Average</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table data will be loaded dynamically from CSV -->
+                        </tbody>
+                    </table>
+                    <div class="text-center py-3 loading-indicator">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Loading data...</p>
+                    </div>
+                </div>
+
+                
+                
+                <div class="csv-download text-center mt-3">
+                    <a href="data/point-bench.csv" class="btn btn-sm btn-outline-primary">Download Complete Data (CSV)</a>
+                </div>
+                
+                <!-- Point-Bench Gallery -->
+                <div class="gallery-container mt-5" id="gallery">
+                    <h3 class="text-center mb-4">Point-Bench Gallery</h3>
+                    <div id="pointBenchCarousel" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner">
+
+                            <!-- Example 1 -->
+                            <div class="carousel-item active">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/7c9a81195e8a1d61b73f0a27bcabeb068425c701 (1).jpg" class="img-fluid rounded" alt="Point-Bench Example 1">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/7c9a81195e8a1d61b73f0a27bcabeb068425c701 (1)_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 2 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the object to the right of the television."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Example 2 -->
+                            <div class="carousel-item ">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/0_eheUSKS-D2VumiBm.jpg" class="img-fluid rounded" alt="Point-Bench Example 2">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/0_eheUSKS-D2VumiBm_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 2 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the object used to stir or mix things."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Example 3 -->
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/2fc2f9e5-68f3-4ba6-ad74-4f3f76e21377_4592x2870.jpg" class="img-fluid rounded" alt="Point-Bench Example 3">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/2fc2f9e5-68f3-4ba6-ad74-4f3f76e21377_4592x2870_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 3 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the structure that cars use to travel over the river."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Example 4 -->
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/6b8ee8146b505bc33393243ca9601d3056a5b71f.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/6b8ee8146b505bc33393243ca9601d3056a5b71f_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the window to the right of the red door."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/4544189205_3bd5d3633c_b.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/4544189205_3bd5d3633c_b_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the screen indicating the speed."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/15068433196_c02cf90058_z.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/15068433196_c02cf90058_z_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to where items could be placed on the bike."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/15175605546_291318c772_b.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/15175605546_291318c772_b_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the object that most likely contains policies."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/17322928521_fec16ec8b4_b.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/17322928521_fec16ec8b4_b_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to all the cups."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/27784152528_fc115eff19_b.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/27784152528_fc115eff19_b_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to what could drive people from one place to another in the airport."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/food-bird-field-food-drink-f76b3a-1024.jpg" class="img-fluid rounded" alt="Point-Bench Example 4">
+                                            <div class="caption">Image</div>
+                                        </div>
+                                        <div class="gallery-item mb-3">
+                                            <img src="data/gallery/food-bird-field-food-drink-f76b3a-1024_overlay.png" class="img-fluid rounded" alt="Point-Bench Example 4 Mask">
+                                            <div class="caption">Mask</div>
+                                        </div>
+                                        <div class="gallery-item text-center">
+                                            <div class="caption query-text">Query: "Point to the animal that lays eggs."</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            
+                        </div>
+                        
+                        <!-- Navigation Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#pointBenchCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#pointBenchCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        
+                        <!-- Indicators -->
+                        <div class="carousel-indicators position-relative mt-3">
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                            <button type="button" data-bs-target="#pointBenchCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Point-Battle Section -->
+        <section id="point-battle" class="leaderboard-section alt-bg">
+            <div class="container">
+                <h2 href="https://tinyurl.com/PointBattle" class="section-title">Point-Battle</h2>
+                <p class="text-center mb-4">Performance disparities across model types and prompt strategies</p>
+                <div class="table-responsive">
+                    <table class="table leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Model</th>
+                                <th>Elo Rating</th>
+                                <th>Wins</th>
+                                <th>Losses</th>
+                                <th>Games</th>
+                                <th>Win Rate</th>
+                                <th>Lower CI</th>
+                                <th>Upper CI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table data will be loaded dynamically from CSV -->
+                        </tbody>
+                    </table>
+                    <div class="text-center py-3 loading-indicator">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Loading data...</p>
+                    </div>
+                </div>
+                <div class="csv-download text-center mt-3">
+                    <a href="data/point-battle.csv" class="btn btn-sm btn-outline-primary">Download Complete Data (CSV)</a>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- Point-Act Section -->
+        <section id="point-act" class="leaderboard-section">
+            <div class="container">
+                <h2 class="section-title">Point-Act</h2>
+                <p class="text-center mb-4">Diverse datasets for standardized scenarios and rigorous evaluation protocols</p>
+                
+                <!-- Video Container -->
+                <div class="video-container mb-5">
+                    <div class="ratio ratio-16x9">
+                        <video src="data/Point-Act.mp4" title="Point-Act Demo Video" controls></video>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Challenge</th>
+                                <th>Success Rate</th>
+                                <th>SUS Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table data will be loaded dynamically from CSV -->
+                        </tbody>
+                    </table>
+                    <div class="text-center py-3 loading-indicator">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Loading data...</p>
+                    </div>
+                </div>
+                <div class="csv-download text-center mt-3">
+                    <a href="data/point-act.csv" class="btn btn-sm btn-outline-primary">Download Complete Data (CSV)</a>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Point Arena</h2>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Our Mission</h3>
+                        <p>Point Arena is the first open and unified evaluation platform specifically designed to assess language-guided pointing capabilities in multi-modal large language models (MLLMs).</p>
+                        <p>Despite recent advances in visual reasoning, existing benchmarks lack fine-grained grounding tasks that require precise spatial alignment between language and vision. Point Arena addresses this gap by offering standardized scenarios, diverse datasets, and rigorous evaluation protocols.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Research Findings</h3>
+                        <ul class="benchmark-list">
+                            <li><strong>Performance Disparities</strong>: Significant differences across model types and prompt strategies</li>
+                            <li><strong>Current Limitations</strong>: Identified challenges in spatial reasoning and grounding fidelity</li>
+                            <li><strong>Future Directions</strong>: New paths for multi-modal alignment research</li>
+                        </ul>
+                        <p>Point Arena is publicly available and aims to facilitate reproducible and transparent progress in multi-modal understanding.</p>
+                    </div>
+                </div>
+            </div>
+                <br>
+            <!-- BibTeX Citation -->
+            <div class="container">
+                <h4 class="mb-3 text-center">Citation</h4>
+                <div class="bibtex-container p-3 bg-white rounded shadow-sm">
+                    <pre class="mb-0" style="white-space: pre-wrap; font-size: 0.8rem;">@misc{cheng2025pointarenaprobingmultimodalgrounding,
+      title={PointArena: Probing Multimodal Grounding Through Language-Guided Pointing}, 
+      author={Long Cheng and Jiafei Duan and Yi Ru Wang and Haoquan Fang and Boyang Li and Yushan Huang and Elvis Wang and Ainaz Eftekhar and Jason Lee and Wentao Yuan and Rose Hendrix and Noah A. Smith and Fei Xia and Dieter Fox and Ranjay Krishna},
+      year={2025},
+      eprint={2505.09990},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2505.09990}, 
+}</pre>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="footer">
@@ -140,4 +516,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/4.3.0/chart.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
