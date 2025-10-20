@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "gemini-2.5-pro-preview-05-06": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro",
                 "grok-2-vision-latest": "https://docs.x.ai/docs/models",
                 "claude-3-7-sonnet-20250219": "https://docs.anthropic.com/en/docs/about-claude/models/all-models",
-                "Gemini-Robotics-ER 1.5": "https://deepmind.google/technologies/gemini/robotics/",
+                "Gemini-Robotics-ER 1.5": "https://deepmind.google/",
                 "Human": "#"
             };
             
